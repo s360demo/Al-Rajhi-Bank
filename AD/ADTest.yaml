@@ -1,0 +1,20 @@
+name: s360
+version: 1
+formatVersion: 1
+inputs: {}
+resources:
+  Cloud_vSphere_Machine_1:
+    type: Cloud.vSphere.Machine
+    properties:
+      image: Win2k22
+      flavor: Small
+      customizationSpec: S360-CustomSpec-W
+      assignment: static
+      networks:
+        - network: '${resource.Cloud_Network_1.id}'
+  Cloud_Network_1:
+    type: Cloud.Network
+    properties:
+      networkType: existing
+      constraints:
+        - tag: Prod
